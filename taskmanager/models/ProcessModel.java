@@ -1,5 +1,7 @@
 package taskmanager.model;
 
+import java.util.ArrayList;
+
 public class ProcessModel {
 	
 	private String id;
@@ -20,6 +22,15 @@ public class ProcessModel {
 		this.user = user;
 	}
 
-	
+	public ArrayList<ProcessModel> getAll(){
+		ArrayList<ProcessModel> all = new ArrayList<ProcessModel>();
+		
+		return all;
+	}
+
+	public ProcessModel get(){
+		return this;
+	}
 	
 }
+

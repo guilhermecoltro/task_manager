@@ -12,4 +12,12 @@ public class ThreadModel {
 		this.nome = nome;
 	}
 
+	public ArrayList<ProcessModel> getAll(){
+		
+	}
+
+	public ProcessModel get(){
+		
+	}
+
 }
