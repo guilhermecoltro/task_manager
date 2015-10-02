@@ -31,6 +31,7 @@ public class ProccessView extends JFrame {
 		this.setLayoutManager();
 		this.initComponents();
 		this.resizeColumnWidth(this.proccessTable);
+		this.initListeners();
 		this.setDefaultConfigs();
 	}
 
@@ -181,6 +182,18 @@ public class ProccessView extends JFrame {
 	    }
 	}
 
+	protected void initListeners(){
+		/*zero.addActionListener(this.input_zero);
+		one.addActionListener(this.input_one);
+		two.addActionListener(this.input_two);
+		tree.addActionListener(this.input_tree);
+		four.addActionListener(this.input_four);
+		five.addActionListener(this.input_five);
+		six.addActionListener(this.input_six);
+		seven.addActionListener(this.input_seven);
+		eight.addActionListener(this.input_eight);
+		nine.addActionListener(this.input_nine);*/
+	}
 
 	protected void setDefaultConfigs(){
 		this.setSize(860, 700);

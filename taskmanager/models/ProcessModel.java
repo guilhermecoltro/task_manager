@@ -1,6 +1,7 @@
 package taskmanager.model;
 
 import java.util.ArrayList;
+import helper.Unix;
 
 public class ProcessModel {
 	
@@ -24,8 +25,8 @@ public class ProcessModel {
 
 	public ArrayList<ProcessModel> getAll(){
 		ArrayList<ProcessModel> all = new ArrayList<ProcessModel>();
-		
-		return all;
+		String pss = Unix.execute("ps aux");
+		System.out.println(pss);
 	}
 
 	public ProcessModel get(){
