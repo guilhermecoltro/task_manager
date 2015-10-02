@@ -4,9 +4,9 @@ import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
-import helper.Table;
+import taskmanager.helper.Table;
 
-public class ProccessView extends JFrame {
+public class View extends JFrame {
 
 	private JPanel leftPanel;
 	private JPanel rightPanel;
@@ -26,7 +26,7 @@ public class ProccessView extends JFrame {
 	private JTable threadTable;
 	private JTextField numThread;
 
-	public ProccessView(){
+	public View(){
 		this.setFonts();
 		this.setLayoutManager();
 		this.initComponents();
@@ -64,21 +64,12 @@ public class ProccessView extends JFrame {
 		this.leftPanel.add(this.kill, this.gbc);
 		//Line 2
 		String[] columns = {"PID", "%CPU", "%MEM", "Usuário", "Início", "Tempo", "Nome"};
-		Object[][] data ={
-			{"223", 	"2,9", "0,2", "_coreaudiod", 		"11:39", "3:07.82", 	"coreaudiod"	},
-			{"136", 	"1,3", "1,7", "guilhermecoltro", 	"12:52", "1:43.13", 	"WindowServer"	},
-			{"619", 	"0,5", "0,9", "guilhermecoltro", 	"12:50", "0:54.43", 	"Spotify"		},
-			{"595", 	"0,3", "2,3", "_windowserver", 		"11:39", "1:14.16", 	"Terminal"		},
-			{"976", 	"0,1", "2,4", "guilhermecoltro", 	"1:28",  "2:06.80", 	"Spotify Helper"},
-			{"1081",	"0,0", "0,2", "guilhermecoltro", 	"1:41",  "0:00.33", 	"nbstated"		},
-			{"1074",	"0,0", "0,1", "root", 				"1:40",  "0:00.03", 	"nbagent"		},
-			{"1073",	"0,0", "0,3", "guilhermecoltro", 	"1:39",  "0:00.28", 	"iTunesHelper"	}
-		};
+		String[][] data = Controller.getAllProcess();
 		
 		this.proccessTable = new JTable(data, columns);
 		Table.gen(this.proccessTable, data, columns);
-		JScrollPane scroll = new JScrollPane(this.proccessTable);
-		scroll.setPreferredSize(new Dimension(250, 250));
+		JScrollPane scroll = new JScrollPane(this.proccessTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll.setPreferredSize(new Dimension(250, 100));
 		this.gbc.weighty = 2.8;
 		this.gbc.ipady = 40;
 		this.gbc.weightx = 1.0;
@@ -182,6 +173,20 @@ public class ProccessView extends JFrame {
 	    }
 	}
 
+	protected void setDefaultConfigs(){
+		this.setSize(985, 700);
+		this.setTitle("Task Manager");
+		this.setVisible(true);
+		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent ev) {
+                if(JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja sair?", "Sair", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION){
+                	System.exit(0);
+                }
+            }
+        });
+	}
+
 	protected void initListeners(){
 		/*zero.addActionListener(this.input_zero);
 		one.addActionListener(this.input_one);
@@ -193,20 +198,6 @@ public class ProccessView extends JFrame {
 		seven.addActionListener(this.input_seven);
 		eight.addActionListener(this.input_eight);
 		nine.addActionListener(this.input_nine);*/
-	}
-
-	protected void setDefaultConfigs(){
-		this.setSize(860, 700);
-		this.setTitle("Task Manager");
-		this.setVisible(true);
-		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent ev) {
-                if(JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja sair?", "Sair", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION){
-                	System.exit(0);
-                }
-            }
-        });
 	}
 
 }

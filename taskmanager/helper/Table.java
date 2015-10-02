@@ -1,4 +1,4 @@
-package helper;
+package taskmanager.helper;
 
 import javax.swing.*;
 import javax.swing.table.*;
@@ -63,8 +63,10 @@ public class Table {
 	    }
 
 		t.setModel(new MyTable(c, r));
+		t.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		t.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		t.setDefaultRenderer(Object.class, new MyCellRenderer());
+		t.setPreferredScrollableViewportSize(new Dimension(300, 200));
 	}
 
 }

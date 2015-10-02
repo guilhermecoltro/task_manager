@@ -1,9 +1,11 @@
-import taskmanager.ProccessView;
+import taskmanager.View;
+import taskmanager.Controller;
 
 public class start {
 	
 	public static void main(String[] args){
-		ProccessView pv = new ProccessView();
+		//Controller.getProcessName("/System/Library/Frameworks/CryptoTokenKit.framework/ctkd -s");
+		View v = new View();
 	}
 
 }

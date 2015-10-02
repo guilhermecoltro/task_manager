@@ -1,2 +1,2 @@
 # task_manager
-Gerenciador de Tarefas Voltado para Windows / Linux em Swing [Java]
+Gerenciador de Tarefas Voltado para Sistemas UNIX em Swing [Java]
